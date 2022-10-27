@@ -1,0 +1,3 @@
+In Spark, you create UDF by creating a function in a language you prefer to use for Spark.
+For example, if you are using Spark with scala, you create a UDF in scala language and wrap it with udf() function
+or register it as udf to use it on DataFrame and SQL respectively.

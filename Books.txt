@@ -1,0 +1,4 @@
+id|name|author_name
+1|BOY|suresh,srinivas
+2|Girl|ayyappa,gopi
+3|Trans|naveen
