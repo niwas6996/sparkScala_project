@@ -22,7 +22,7 @@ object kaggleData extends App with spark {
     .withColumn("dateDiff", datediff(current_timestamp(), to_timestamp($"timestamp", "EEE MMM dd HH:mm:ss zzz yyyy")))
     .select("id").createTempView("data")
 //    .agg(count("id")-countDistinct("id"))
-spark.sql("""select * from (select id,dense_rank() over(partition by id order by id) dr from data ) t where t.dr = 2 """)
+spark.sql("""select * from (select id,dense_rank() over(partition by id order by id) dr from data ) t group by t.id having count(t.*)>1""")
 
 //    spark.sql("""select id,count(id)-count(distinct id) as duplicate from data group by id order by 2 desc limit 1""")
     .show(truncate = false)
