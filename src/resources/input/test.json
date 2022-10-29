@@ -1,5 +1,0 @@
-[{"id":1,"PHONE_TYPE":["M","F"],"NUMBERS": [1,4]},
-{"id":2,"PHONE_TYPE":["F"],"NUMBERS": [2]},
-{"id":3,"PHONE_TYPE":["T","F"],"NUMBERS": [3,5]},
-{"id":4,"PHONE_TYPE":["M","T","F"],"NUMBERS": [3,5,7]}]
-

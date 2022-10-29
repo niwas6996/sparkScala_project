@@ -1,7 +1,5 @@
 package spark_30DaysOfSpark
 
-import suresh_scala.spark
-
 object legatoInterview extends App with spark {
 
   import spark.implicits._
@@ -15,14 +13,19 @@ object legatoInterview extends App with spark {
 
   val dataset_1 = data1.toDF(cols: _*)
   val dataset_2 = data2.toDF(cols: _*)
+
+  dataset_1.show()
+  dataset_2.show()
+
   dataset_1.createTempView("dataset1")
   dataset_2.createTempView("dataset2")
   //  dataset_1.join(dataset_2,dataset_1("tableName")===dataset_2("tableName") and(dataset_1("rowCount")=!=dataset_2("rowCount")),"full")
   //    .withColumn("diff",dataset_1("rowCount")-dataset_2("rowCount"))
-  dataset_1.join(dataset_2, Seq("tableName"), "full")
+  val joindf = dataset_1.join(dataset_2, Seq("tableName"), "full")
     .toDF("tableName", "Ds1_rowCount", "Ds2_rowCount")
     //  .na.fill(0,Array("Ds1-rowCount","Ds2-rowCount"))
-    .createTempView("temp")
+    joindf.createTempView("temp")
+  joindf.show()
   //  .filter("where rowCount <> rowCount ")
   //  .filter($"Ds1-rowCount"=!=$"Ds2-rowCount")
   //    .show()
@@ -44,4 +47,10 @@ object legatoInterview extends App with spark {
   //              |where d1.rowCount<>d2.rowCount
   //              |order by d1.tableName""".stripMargin).show()
 
+//  spark.sql(
+//    """create table emp(id int,name string)
+//
+//      |""".stripMargin).createTempView("emp")
+//  spark.sql("""select * from emp""").show()
+//scala.io.StdIn.readLine()
 }

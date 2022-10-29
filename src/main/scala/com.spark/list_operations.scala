@@ -1,3 +1,5 @@
+
+
 object list_operations {
   def main(args: Array[String]): Unit = {
     val list1=List(1,4,7,3,8,9,6,7,4,9)
