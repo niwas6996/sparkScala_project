@@ -14,7 +14,7 @@ object fixedWidthFlatFile extends App with spark {
     .withColumn("T/F",$"value".substr(13,6))
     .withColumn("qty",$"value".substr(19,5))
 
-  flatFileDf.show(false)
+  trimDf.show(false)
 //  trimDf.show(false)
 
 
