@@ -1,4 +1,4 @@
-package suresh_scala
+package spark_30DaysOfSpark
 
 import org.apache.spark.sql.SparkSession
 

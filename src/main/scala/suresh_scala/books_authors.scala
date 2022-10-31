@@ -2,6 +2,7 @@ package suresh_scala
 
 import org.apache.spark.sql.functions.{explode, split}
 import org.apache.spark.sql.types.{ArrayType, IntegerType, StringType, StructType}
+import spark_30DaysOfSpark.spark
 
 object books_authors extends App with spark {
   spark.sparkContext.setLogLevel("ERROR")

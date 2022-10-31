@@ -1,6 +1,7 @@
 package suresh_scala
 
-import org.apache.spark.sql.functions.{split,explode}
+import org.apache.spark.sql.functions.{explode, split}
+import spark_30DaysOfSpark.spark
 
 object lega extends App with spark {
   spark.sparkContext.setLogLevel("ERROR")
