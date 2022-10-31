@@ -2,7 +2,8 @@ package spark_30DaysOfSpark
 
 object reverseString extends App{
 
-  val str = "hai how are you"
+//  val str = "hai how are you"
+  val str = scala.io.StdIn.readLine()
   var revStr = ""
 
   for(i<- 1 to str.length) {
