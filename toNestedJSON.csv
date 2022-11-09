@@ -1,0 +1,5 @@
+id,name,age,loc,salary,role,language1,language2,language3
+1,suresh,32,HYD,15LPA,DEV,PYTHON,SCALA,SQL
+2,Satish,34,BNJR,14LPA,SUP,SQL,SCALA,
+3,Sai,26,HYD,14LPA,DEV,PYTHON,SCALA,SQL
+4,Srinu,28,BNJR,17LPA,DEV,SQL,SCALA,
