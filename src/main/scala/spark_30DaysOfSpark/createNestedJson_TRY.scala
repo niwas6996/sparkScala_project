@@ -1,39 +1,30 @@
-//package spark_30DaysOfSpark
-//
-//object createNestedJson_TRY extends spark with App {
-//
-//  case class id(empId: Int)
-//
-//  case class name(empName: String)
-//
-//  case class location(loc:String)
-//
-//  case class details(Name: name, AGE: Int, LOCATION: location)
-//
-//  case class status(MARTIALSTATUS: String)
-//
-//  case class emp_details(ID: id, DETAILS: details, STATUS: status)
-//
-//
-//  spark.sparkContext.setLogLevel("ERROR")
-//
-//  import spark.implicits._
-//
-//  val data = Seq((1, "suresh", "32", "HYD", "Married"),
-//    ((2, "Srinu", "26", "HYD", "Single")),
-//    ((3, "sai", "324", "HYD", "Single")),
-//    ((4, "sateesh", "34", "HYD", "married")))
-//
-//  val cols = Seq("id", "name", "age", "location", "MartialStatus")
-//  val df = data.toDF(cols: _*)
-//
-//  val nesteDF = df.map(r => {
-//    val id_1 = id(r.getInt(0))
-//    val name_1 = name(r.getString(8))
-//    val location_1 = location(r.getString(0))
-//    val details_1 = details(id_1,r.getInt(1),r.getString(2),location_1)
-//
-//  })
-//
-//}
-//
+package spark_30DaysOfSpark
+
+import spark_30DaysOfSpark.toNestedJson_CaseClass_package._
+
+object createNestedJson_TRY extends spark with App {
+
+  import spark.implicits._
+
+  val df = Seq(("64989", "ADELYN", "SALESMAN", "66928", "1991-02-20", "1700.00", "400.00", "3001", "2000-02-20", "France"),
+    ("64999", "Raj", "SALESMAN", "66928", "1991-02-20", "1700.00", "400.00", "3001", "2000-02-20", "Ind"))
+    .toDF("emp_id", "emp_name", "job_name", "manager_id", "hire_date", "salary",
+      "commission", "dep_id", "increment_date", "country")
+
+  val nestedDf = df.map(x => {
+    val empId_1 = empID(x.getString(0))
+    val empName_1 = empNAME(x.getString(1))
+    val depId_1 = depID(x.getString(7))
+    val empDetails_1 = empDETAILS(empId_1, empName_1, x.getString(2))
+    val managerId_1 = mngrID(x.getString(3))
+    val hireDATE_1 = hireDATE(x.getString(4))
+
+  emp_record(empDetails_1,x.getString(8),x.getString(6),x.getString(9),hireDATE_1,managerId_1,depId_1,x.getString(5))
+  }
+  )
+nestedDf.show(false)
+
+
+//  spark.sql(""" select int(date_format(add_months(current_date,-1),'YYYY')) """).show()
+
+}
