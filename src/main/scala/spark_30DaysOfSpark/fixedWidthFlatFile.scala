@@ -14,8 +14,12 @@ object fixedWidthFlatFile extends App with spark {
     .withColumn("T/F",$"value".substr(13,6))
     .withColumn("qty",$"value".substr(19,5))
 
-  trimDf.show(false)
-//  trimDf.show(false)
+ if(trimDf.count()!=0){
+   trimDf.coalesce(1).write.mode("overWrite").csv("KPI_writeToDf")
+ }
+ else
+   println("dataFrame has no records")
+//  trimDf.collect()
 
 
 
